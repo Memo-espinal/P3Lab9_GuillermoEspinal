@@ -17,32 +17,31 @@ int main(int argc, char** argv) {
 	vector<Soldado*>V2soldados;
 	loop :
 		int resp=0;
+		cout<<"++++++++++++++++MENU----------------------"<<endl;
 		cout<< "1. Crear soldado"<< endl;
 		cout<<"2. Eliminar soldados"<<endl;
 		cout<<"3. Listar soldados"<<endl;
 		cout<<"4. Guardar soldados"<<endl;
 		cout<<"5. Cargar soldados"<<endl;
-		cout<<"6. Simulación"<<endl;
+		cout<<"6. Simulacion"<<endl;
 		cout<<"7. Salir"<<endl;
+		
 		cin>>resp;
 		switch(resp){
 			case 1:{
 				int lista=0;
 				cout <<"Para que lista quiere crear:"<< endl;
-				cout <<" 1"<< endl;
-				cout <<" 2"<< endl;
+				cout <<" 1.- Sleeping Knights"<< endl;
+				cout <<" 2.- Moonlit Black Cats "<< endl;
 				cin>> lista;
 				int crear=0;
-				cout << "Ingrese que quiere crear:"<< endl;
+				cout << "+++++++ Ingrese que quiere crear: +++++ "<< endl;
 				cout <<"1.-Soldado de Asalto"<< endl;
 				cout <<"2.-Soldado de Soporte" << endl;
 				cin>> crear ;
-				string nombre;
+				//string nombre;
 				int pvida=0;
 				int pfuerza=0;
-				cout << "Ingrese el nombre : "<< endl;
-				getline(cin,nombre);
-				getline(cin,nombre);
 				cout <<"Ingrese los puntos de vida: "<< endl;
 				cin>> pvida;
 				cout <<"Ingrese los puntos de fuerza : "<< endl;
@@ -80,6 +79,8 @@ int main(int argc, char** argv) {
 			case 2 :{
 				int lista=0;
 				cout<<"De que lista quiere eliminar soldados?"<<endl;
+				cout <<" 1.- Sleeping Knights"<< endl;
+				cout <<" 2.- Moonlit Black Cats "<< endl;
 				cin>>lista;
 				if(lista==1){
 					if(V1soldados.size()>0){
@@ -87,7 +88,7 @@ int main(int argc, char** argv) {
 							cout<< i <<".- "<<" "<<"Vida: "<<V1soldados[i]->getVida()<<" Fuerza: "<<V1soldados[i]->getFuerza()<<V1soldados[i]->toString()<<endl;
 						}
 					}else{
-						cout<<"No hay soldados en esa lista"<< endl;
+						cout<<"No hay soldados en esta lista"<< endl;
 					}
 					
 				}else if (lista==2){
@@ -100,7 +101,7 @@ int main(int argc, char** argv) {
 					}	
 				}
 				int elim=0;
-				cout<<"INgrese que soldado quiere eliminar: "<< endl;
+				cout<<"Ingrese que soldado quiere eliminar: "<< endl;
 				cin>>elim;
 				if(lista==1){
 					if(elim>V1soldados.size()){
@@ -127,9 +128,9 @@ int main(int argc, char** argv) {
 			}
 			case 3 :{
 				int lista=0;
-				cout <<" que lista quiere ver ?"<<endl;
-				cout<< "Lista 1 : "<< V1soldados.size()<< " ";
-				cout<<"Lista 2 : "<<V2soldados.size()<<endl;
+				cout <<"Que lista quiere ver ?"<<endl;
+				cout<< "1.- Sleeping Knights : "<< V1soldados.size()<< "\n";
+				cout<<"2.- Moonlit Black Cats : "<<V2soldados.size()<<endl;
 				cin>>lista;
 				cout<< lista<< endl;
 				if(lista==1){
@@ -137,22 +138,22 @@ int main(int argc, char** argv) {
 					if(V1soldados.size()>0){
 						for (int i=0; i<V1soldados.size();i++){
 							//cout<< "almenos llego al for.";
-							cout<< i <<".- "<<" "<<"Vida: "<<V1soldados[i]->getVida()<<" Fuerza: "<<V1soldados[i]->getFuerza()<<V1soldados[i]->toString()<<endl;
+							cout<< i <<".- "<<"Soldado "<< i <<" Vida: "<<V1soldados[i]->getVida()<<" Fuerza: "<<V1soldados[i]->getFuerza()<<V1soldados[i]->toString()<<endl;
 						}
 					}else{
-						cout<<"No hay soldados en esa lista"<< endl;
+						cout<<"No hay soldados en Sleeping Knights !!!!"<< endl;
 					}
 					
 				}else if (lista==2){
 					if(V2soldados.size()>0){
 						for (int i=0; i<V2soldados.size();i++){
-							cout<< i <<".- "<<" "<<"Vida: "<<V2soldados[i]->getVida()<<" Fuerza: "<<V2soldados[i]->getFuerza()<<V2soldados[i]->toString()<<endl;
+							cout<< i <<".- "<<"Soldado "<< i <<" "<<"Vida: "<<V2soldados[i]->getVida()<<" Fuerza: "<<V2soldados[i]->getFuerza()<<V2soldados[i]->toString()<<endl;
 						}
 					}else{
-						cout<<"No hay soldados en esa lista"<< endl;
+						cout<<"No hay soldados een Moonlit Black Cats!!!"<< endl;
 					}
 				}else{
-					cout<<"SOlo hay 2 listas"<< endl;
+					cout<<"Solo hay 2 listas"<< endl;
 				}
 				goto loop;
 				break;
@@ -178,6 +179,7 @@ int main(int argc, char** argv) {
 					 	file2.write((char*)temp,tempSize);
 					} 
 				}
+				cout<<"Se han guardado los solados!!!\n";
 				file.close();
 				file2.close();
 				goto loop;
@@ -190,15 +192,15 @@ int main(int argc, char** argv) {
 				//if(file.is_open()){
 				size_t tempSize=0;
 					while(file.read((char*) &tempSize, sizeof(size_t))){
-						cout<<"entre al while   ";
+					//	cout<<"entre al while   ";
 						Soldado* soldado=(Soldado*)malloc(tempSize);
 						//cout<<"me mame antes del read: ";
 						file.read((char*)soldado,tempSize);
-						cout<<tempSize;
+					//	cout<<tempSize;
 						//cout << soldado->getNombre()<<endl;
 						//cout<<"me mame antes del push";
 						V1soldados.push_back(soldado);
-						cout<<"meti al soldado";
+					//	cout<<"meti al soldado";
 					}
 				//}
 				//Segundo archivo
@@ -208,11 +210,10 @@ int main(int argc, char** argv) {
 					while(file2.read((char*) &tempSize, sizeof(size_t))){
 						Soldado* soldado=(Soldado*)malloc(tempSize);
 						file2.read((char*)soldado,tempSize);
-							cout<<tempSize;
+						//cout<<tempSize;
 						V2soldados.push_back(soldado);
 					}
-				//}//
-				cout<<"Cargados los soldados!"<<endl;
+				cout<<"Cargados los soldados!!!!"<<endl;
 				file.close();
 				file2.close();
 				
@@ -227,45 +228,44 @@ int main(int argc, char** argv) {
 						int num1=0;
 						int num2 =0;
 						num1= 0+rand()%(V1soldados.size()-0);
-						num2= 0+rand()%(V2soldados.size()-0);	
+						num2= 0+rand()%(V2soldados.size()-0);
 						if (turno%2!=0){
-							cout<<"Turno "<<turno<<"lista 1 sera la atacante y lista 2 la defensora!!!"<<endl;
+							cout<<"Turno "<<turno<<" Sleepig Knights seran los atacantes y Moonlit Black Cats a la defensiva!!!"<<endl;
 							Soldado* atacante=V1soldados[num1];
 							Soldado* defensor=V2soldados[num2];
 							int ataque = atacante->Ataque(defensor);
 							defensor->Defensa(ataque,atacante);
 							if(defensor->getVida()<=0){
 								V2soldados.erase(V2soldados.begin()+num2);
-								cout<<"!!Defensor muere! sera eliminado!!"<<endl;
+								cout<<"!!Soldado "<<num2 <<" de Moonlit Black Cats sera eliminado!!"<<endl;
 							}else{
-								cout<<"!!Aguanto como macho pecho peludo!!"<<endl;
+								cout<<"!!Aguanto el golpe y le queda: "<<defensor->getVida() <<" !!"<<endl;
 							}
 						}else{
-							cout<<"Turno "<<turno<<"lista 2 sera la atacante y lista 1 la defensora!!!"<<endl;
+							cout<<"Turno "<<turno<<"Moonlit Black Cat seran los atacantes y Sleeping Knights a la defensiva!!!"<<endl;
 							Soldado* atacante=V2soldados[num2];
 							Soldado* defensor=V1soldados[num1];
 							int ataque =atacante->Ataque(defensor);
 							defensor->Defensa(ataque,atacante);
 							if(defensor->getVida()<=0){
 								V1soldados.erase(V1soldados.begin()+num1);
-								cout<<"!!Defensor muere! sera eliminado!!"<<endl;
+								cout<<"!!Soldado "<<num1 <<" de Sleeping Knights sera eliminado!!"<<endl;
 							}else{
-								cout<<"!!Aguanto como macho pecho peludo!!"<<endl;
+								cout<<"!!Aguanto el golpe y le queda: "<<defensor->getVida() <<" !!"<<endl;
 							}
 							
 						}
-						cout<<"\n\nLista 1 restantes: "<<V1soldados.size()<<"  Lista 2 restantes : "<<V2soldados.size();
+						cout<<"\nSleeping Knights restantes: "<<V1soldados.size()<<"  Moonlit Black Cats restantes : "<<V2soldados.size()<<"\n\n";
 						turno++;
 					}
-					
+					if(V1soldados.size()==0){
+						cout<<"Moonlit Black Cats Gana !!!"<<endl;
+					}else if(V2soldados.size()==0){
+						cout<<"Sleeping Knights Gana!!!"<< endl;
+					}
 					cout<< "simulacion terminada!!"<<endl;
-					
 				}
-				
-			
-				
-				
-				
+				goto loop;
 				break;
 			}
 				

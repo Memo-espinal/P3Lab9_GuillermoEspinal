@@ -3,7 +3,6 @@
 
 Ssoporte::Ssoporte(int Dvida,int Dfuerza,int Dblindaje,int Dcamuflaje  )
 {
-	//nombre=Dnombre;
 	pvida=Dvida;
 	pfuerza= Dfuerza;
 	blindaje=Dblindaje; 
