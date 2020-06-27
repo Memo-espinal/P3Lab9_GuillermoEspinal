@@ -9,9 +9,13 @@ using namespace std;
 class Ssoporte : public Soldado
 {
 	public:
-		Ssoporte(string,int,int,int,int);
+		Ssoporte(int,int,int,int);
 		int Ataque(Soldado*);
 		void Defensa(int , Soldado*);
+		string toString();
+		size_t getSize();
+		int getBlindaje();
+		int getCamuflaje();
 		~Ssoporte();
 	protected:
 		int blindaje;

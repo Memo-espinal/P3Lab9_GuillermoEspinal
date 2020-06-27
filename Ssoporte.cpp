@@ -1,9 +1,9 @@
 #include "Ssoporte.h"
 #include "Sasalto.h"
 
-Ssoporte::Ssoporte(string Dnombre,int Dvida,int Dfuerza,int Dblindaje,int Dcamuflaje  )
+Ssoporte::Ssoporte(int Dvida,int Dfuerza,int Dblindaje,int Dcamuflaje  )
 {
-	nombre=Dnombre;
+	//nombre=Dnombre;
 	pvida=Dvida;
 	pfuerza= Dfuerza;
 	blindaje=Dblindaje; 
@@ -23,6 +23,23 @@ void Ssoporte::Defensa(int ataque , Soldado* atacante){
 		pvida = pvida-ataque;
 	}
 	
+}
+int Ssoporte::getBlindaje(){
+	return blindaje;
+}
+int Ssoporte::getCamuflaje(){
+	return camuflaje;
+}
+string Ssoporte::toString(){
+	string ret = "Blindaje: ";
+	ret+=to_string(blindaje);
+	ret+=" ";
+	ret+="Camuflaje: ";
+	ret+=to_string(camuflaje);
+	return ret;
+}
+size_t Ssoporte::getSize(){
+	return sizeof(Ssoporte);
 }
 
 Ssoporte::~Ssoporte()

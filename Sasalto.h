@@ -10,9 +10,13 @@ using namespace std;
 class Sasalto : public Soldado
 {
 	public:
-		Sasalto(string,int,int,int,int);
+		Sasalto(int,int,int,int);
 		int Ataque(Soldado*);
 		void Defensa(int , Soldado*);
+		string toString();
+		size_t getSize();
+		int getVelocidad();
+		int getFextra();
 		~Sasalto();
 	protected:
 		int velocidad;

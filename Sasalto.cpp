@@ -1,9 +1,9 @@
 #include "Sasalto.h"
 
 
-Sasalto::Sasalto(string Dnombre,int Dvida,int Dfuerza,int Dvelocidad,int DFextra )
+Sasalto::Sasalto(int Dvida,int Dfuerza,int Dvelocidad,int DFextra )
 {
-	nombre=Dnombre;
+	//nombre=Dnombre;
 	pvida=Dvida;
 	pfuerza= Dfuerza;
 	velocidad= Dvelocidad;
@@ -24,6 +24,23 @@ void Sasalto::Defensa(int ataque , Soldado* atacante){
 		pvida = pvida - (ataque/Fextra);
 	}
 	
+}
+int Sasalto:: getVelocidad(){
+	return velocidad;
+}
+int Sasalto::getFextra(){
+	return Fextra;
+}
+string Sasalto::toString(){
+	string ret = " velocidad: ";
+	ret+=to_string(velocidad);
+	ret+=" ";
+	ret+="Fuerza extra: ";
+	ret+=to_string(Fextra);
+	return ret;
+}
+size_t Sasalto::getSize(){
+	return sizeof(Sasalto);
 }
 
 Sasalto::~Sasalto()
